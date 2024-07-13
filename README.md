@@ -65,7 +65,7 @@ python manage.py runserver
 ```
 Access the application at http://127.0.0.1:8000/ and the admin interface at http://127.0.0.1:8000/admin/.
 
-### Step 9: Manually Run Cron Job
+### Step 7: Manually Run Cron Job
 
 ```bash
 python manage.py runcrons
