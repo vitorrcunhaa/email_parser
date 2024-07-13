@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load bootstrap5 %}
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+  <title>Email List</title>
+  <style>
+    .center-screen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh; /* adjust to move your table up or down */
+    }
+  </style>
+</head>
+<body>
+  <main class="main-content center-screen">
+    <div class="container text-center">
+      <h1>Email List</h1>
+      <a href="{% url 'email_create' %}" class="btn btn-primary">Create new email</a>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Amount</th>
+              <th>Comments</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for email in emails %}
+            <tr>
+              <td>{{ email.name }}</td>
+              <td>{{ email.amount }}</td>
+              <td>{{ email.comments }}</td>
+              <td>
+                <a href="{% url 'email_detail' email.pk %}" class="btn btn-info">View</a>
+                <a href="{% url 'email_update' email.pk %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'email_delete' email.pk %}" class="btn btn-danger">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
